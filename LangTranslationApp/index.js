@@ -103,6 +103,7 @@ const translateButton=document.querySelector('button');
 const fromText=document.querySelector('.from-text')
 const toText=document.querySelector('.to-text');
 const selectTag=document.querySelectorAll('select');
+const exchangeTag=document.querySelector('.exchange')
 
 
 
@@ -120,6 +121,16 @@ selectTag.forEach((tag, id)=> {
 
         tag.insertAdjacentHTML('beforeend', option);
     }
+})
+
+
+exchangeTag.addEventListener('click', ()=>{
+    let tempText=fromText.value;
+    let tempLanguage=selectTag[0].value;
+    selectTag[0].value=selectTag[1].value;
+    selectTag[1].value=tempLanguage;
+    fromText.value=toText.value;
+    toText.value=tempText;
 })
 
 translateButton.addEventListener('click', ()=>{
