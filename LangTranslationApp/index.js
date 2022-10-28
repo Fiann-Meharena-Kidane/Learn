@@ -153,9 +153,17 @@ icons.forEach(icon =>{
        }else if (target.classList.contains('copy-to')){
         navigator.clipboard.writeText(toText.value)
        }else if (target.classList.contains('to-volume')){
-        console.log('to volume clicked')
+            let speech= new SpeechSynthesisUtterance(toText.value)
+            speech.lang= selectTag[1];
+            speechSynthesis.speak(speech);
+
        }else if(target.classList.contains('from-volume')){
-        console.log('form volume clicked ')
+        let speech= new SpeechSynthesisUtterance(fromText.value)
+
+        speech.lang=selectTag[1];
+
+        speechSynthesis.speak(speech);
        }
     })
 })
+
