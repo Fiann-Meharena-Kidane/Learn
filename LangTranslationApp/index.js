@@ -104,6 +104,7 @@ const fromText=document.querySelector('.from-text')
 const toText=document.querySelector('.to-text');
 const selectTag=document.querySelectorAll('select');
 const exchangeTag=document.querySelector('.exchange')
+icons=document.querySelectorAll('.row i')
 
 
 
@@ -141,5 +142,20 @@ translateButton.addEventListener('click', ()=>{
 
     fetch(apiURL).then(res  => res.json()).then(data => {
         toText.value=data.responseData.translatedText;
+    })
+})
+
+
+icons.forEach(icon =>{
+    icon.addEventListener('click', ({target})=>{
+       if(target.classList.contains('copy-from')){
+        navigator.clipboard.writeText(fromText.value);
+       }else if (target.classList.contains('copy-to')){
+        navigator.clipboard.writeText(toText.value)
+       }else if (target.classList.contains('to-volume')){
+        console.log('to volume clicked')
+       }else if(target.classList.contains('from-volume')){
+        console.log('form volume clicked ')
+       }
     })
 })
